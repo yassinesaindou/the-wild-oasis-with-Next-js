@@ -1,4 +1,16 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "anirjltnpwucqmijtcol.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/cabin-images/**",
+      },
+    ],
+  },
+};
+// next.config.js
 
 export default nextConfig;
