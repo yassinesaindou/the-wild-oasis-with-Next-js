@@ -7,7 +7,6 @@ export default function Cabin({cabin}) {
     const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
   
-  console.log(cabin)
   return (
     <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
 
