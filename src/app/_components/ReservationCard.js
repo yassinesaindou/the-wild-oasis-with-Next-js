@@ -4,11 +4,32 @@ import DeleteReservation from "@/app/_components/DeleteReservation";
 import Image from "next/image";
 import Link from "next/link";
 
-export const formatDistanceFromNow = (dateStr) =>
-  formatDistance(parseISO(dateStr), new Date(), {
-    addSuffix: true,
-  }).replace("about ", "");
+// export const formatDistanceFromNow = (dateStr) =>
+//   formatDistance(parseISO(dateStr), new Date(), {
+//     addSuffix: true,
+//   }).replace("about ", "");
 
+export const formatDistanceFromNow = (dateStr) => {
+  if (!dateStr) {
+    console.error("Invalid date string:", dateStr);
+    return "Invalid date";
+  }
+
+  try {
+    const parsedDate = parseISO(dateStr);
+    if (isNaN(parsedDate)) {
+      console.error("Failed to parse date:", dateStr);
+      return "Invalid date";
+    }
+    return formatDistance(parsedDate, new Date(), { addSuffix: true }).replace(
+      "about ",
+      ""
+    );
+  } catch (error) {
+    console.error("Error formatting date:", error);
+    return "Invalid date";
+  }
+};
 function ReservationCard({ booking, onDelete }) {
   const {
     id,
